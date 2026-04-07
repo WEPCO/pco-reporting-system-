@@ -1,0 +1,359 @@
+<!--  QUICK CUTSOMIZATION
+
+INSERT URL FOR LOGO:
+{% assign logo_url = 'https://editor.ne16.com/woodsedge/Groups_Folder/Groups_Documents/EDL_Logo_FINAL.png'%}
+
+-->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ report.name }} - {{ list.name }}</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="icon" href="https://i2.wp.com/pcoreports.com/wp-content/uploads/2018/12/cropped-favicon.png?fit=32%2C32&amp;ssl=1" sizes="32x32">
+    
+    <style>
+      * {font-family: 'Roboto', sans-serif;}
+      
+      .fm {font-size: 18pt; background-color: #1caed9;}
+      .nivel {font-size: 18pt; color: #1caed9; background-color: #000000; text-align: left; padding-bottom: 0px !important; padding-left: 5px;  }
+      .classes td  {padding-bottom: 15px;}
+    
+      .person {}
+      .person_header { display: flex; flex-direction: row;}
+      .avatar { width: 175px; border-radius: 90px;}
+      .name_d { display: table; width: -webkit-fill-available; height: 175px; font-size: 24pt; font-weight: 900; text-align: center; }
+      .name_s { display: table-cell;vertical-align: middle; }
+      .org_logo { width: 175px; margin: auto; }
+    
+      .info { width: 100%; padding-top: 15px; }
+      .classes { width: 100%; padding-top: 15px; }
+      .class_name { padding-bottom: 2px; }
+      .icon { padding-right: 5px;}
+      .parte { color: white; background-color: red; border-radius: 5px; padding-left: 5px; padding-right: 5px; font-size: 11pt; margin-left: 5px; }
+      
+      @media screen {
+        	
+        	body { margin: 0; background-color: #bbbbbb; }
+        	.main { width: 8.0in; padding: 0.5in; background-color: #FFFFFF; margin: auto; }
+        	.spacer { height: 200px; width: 100%; border-bottom: 5px dotted #bbbbbb; margin-bottom: 0.50in; }
+      .container { border-style: inset; border-width: 4px; border-radius: 20px; }
+        	.alert-link,.alert-warning{font-family:"Lucida Sans Unicode","Lucida Grande",sans-serif;font-size:14pt;text-align:center}
+          .alert {padding:15px;margin-bottom:20px;border:1px solid transparent;}
+          .alert-warning { background-color:#dd4f3f }
+  				.alert-box {background-color:#4a4a4a; font-family:"Lucida Sans Unicode","Lucida Grande",sans-serif;font-size:14pt;text-align:center}
+  				.alert-link{color:#fff; border: 0px;}
+        	.kbd {
+                    padding:0.1em 0.6em;
+                    border:1px solid #ccc;
+                    font-family:Arial,Helvetica,sans-serif;
+                    background-color:#f7f7f7;
+                    color:#333;
+                    -moz-box-shadow:0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
+                    -webkit-box-shadow:0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
+                    box-shadow:0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
+                    -moz-border-radius:3px;
+                    -webkit-border-radius:3px;
+                    border-radius:3px;
+                    display:inline-block;
+                    margin:0 0.1em;
+                    text-shadow:0 1px 0 #fff;
+                    white-space:nowrap;
+                    }
+        	}
+
+			@media print {
+        .hidden-print{display:none !important}
+      	@page { margin: 0.50in; }
+      	}
+    </style>
+    
+    {% assign sorted_people = people | sort: 'last_name' %}
+    
+  </head>
+  <body>
+    <div class="hidden-print">
+			<div class="alert alert-box hidden-print" role="alert">
+        <table width="100%">
+          <tr>
+          	<td  class="alert-link" style="vertical-align:bottom;">
+            	For best results, use  <i class="fab fa-chrome"></i> <a href="https://www.google.com/chrome/"  class="alert-link" target="blank">Google Chrome</a>.<br>Formatting may not appear correctly until the report is printed. <br>To Print: File > Print,   |   <span class="kbd">CTRL</span>+<span class="kbd">P</span> for <i class="os fab fa-windows"></i>   |   <span class="kbd">⌘</span>+<span class="kbd">P</span> for <i class="os fab fa-apple"></i>.   <div style="font-size:11;"><i class="far fa-copyright"></i>2018 - {{ "now" | date: '%Y' }} PCO Reports  | <a href="https://www.pcoreports.com" target="_new" class="alert-link">www.pcoreports.com<br><img src="https://www.pcoreports.com/s/PCOFooterHeader.png" width="150"></a></div><div style="font-size:11;">Please do not copy or transfer this report to other persons or organizations.</div>
+            </td>
+					</tr>
+				</table>
+      </div>
+    </div>
+    <div class="main">
+      {% for person in sorted_people %}
+      	<div class="person">
+          <div class="person_header">
+            <div class="avatar">
+              <img class="avatar" src="{{ person.photo_url }}">
+            </div>
+            <div class="name_d">
+              <span class="name_s">{{ person.name }}</span><hr>
+            </div>
+            <div class="org_logo">
+              <img class="org_logo" src="{{logo_url}}">
+            </div>
+          </div>
+          <div class="person_report">
+            <table class="info">
+              <tr>
+              	<th class="fm" colspan="2">
+                  Formación Ministerial
+                </th>
+              </tr>
+              <tr>
+              	<td style="width: 50%;">
+                  
+                  <i class="fas fa-phone icon"></i> {{ person.primary_phone_number }}
+                  
+                </td>
+                <td style="width: 50%;"><span><strong>Comienzo</strong></span> {{ person.custom_tabs.ministerio_hispano.comienzo }} </td>
+              </tr>
+              <tr>
+              	<td>
+                  
+                  <i class="fas fa-envelope icon"></i> {{ person.primary_email }}
+                  
+                </td>
+                <td>
+                  <span><strong>Animador</strong></span> {{ person.custom_tabs.ministerio_hispano.animador }}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  
+                  <div style="float: left; height: 45px;">
+                    <i class="fas fa-home icon"></i>
+                  </div>{{ person.primary_address.postal_address }}
+                  
+                </td>
+                <td></td>
+              </tr>
+            </table>
+            <div class="levels">
+              <!-- BEGIN LEVEL 1  -->
+              <div class="nivel">
+                Cursos Básicos
+              </div>
+
+              {% assign l1_class_count = 0 %}
+
+              <!-- VF BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.vf.value != blank %}
+              {% assign l1_class_count = l1_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>KM Cero/Verdades Fundamentales{% if person.custom_tabs.ministerio_hispano.vf | strip == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- ESS BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.ess.value != blank %}
+              {% assign l1_class_count = l1_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Espiritualidad Emocionalmente sana/Sanidad Interior 8 Decisiones Sanadoras{% if person.custom_tabs.ministerio_hispano.ess.value == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- VP BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.vp.value != blank %}
+              {% assign l1_class_count = l1_class_count | plus: 1 %}
+                <div class="class_name">
+                 <strong>Vida con Propósito {% if person.custom_tabs.ministerio_hispano.vp | strip == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- CI BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.ci.value != blank %}
+              {% assign l1_class_count = l1_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Mi cita intima con el Señor/Vida de Oración {% if person.custom_tabs.ministerio_hispano.ci | strip == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- BIB BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.bib.value != blank %}
+              {% assign l1_class_count = l1_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Como estudiar la Biblia por sí mismo/Amar, Aprender y vivir la Palabra de Dios {% if person.custom_tabs.ministerio_hispano.bib | strip == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- LF BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.lf.value != blank %}
+              {% assign l1_class_count = l1_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Libertad Financiera {% if person.custom_tabs.ministerio_hispano.lf | strip == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- T BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.t.value != blank %}
+              {% assign l1_class_count = l1_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Transformados {% if person.custom_tabs.ministerio_hispano.t | strip == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- CA BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.ca.value != blank %}
+              {% assign l1_class_count = l1_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Curso para miembros (Bautizmo, Diezmo, etc) {% if person.custom_tabs.ministerio_hispano.ca | strip == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- MEM BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.mem.value != blank %}
+              {% assign l1_class_count = l1_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Vida con Propósito {% if person.custom_tabs.ministerio_hispano.mem | strip == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              {% if l1_class_count == 0 %}
+              <div>
+                &nbsp;
+              </div>
+              {% endif %}
+
+              <!-- BEGIN LEVEL 2  -->
+              <div class="nivel">
+                Cursos Intermedios
+              </div>
+
+              {% assign l2_class_count = 0 %}
+
+              <!-- SDM BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.sdm.value != blank %}
+              {% assign l2_class_count = l2_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Sermon del Monte/ Manejo de la lengua/ Epistola de Santiago {% if person.custom_tabs.ministerio_hispano.sdm.value == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- EPA BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.epa.value != blank %}
+              {% assign l2_class_count = l2_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Evangelio por Amistad {% if person.custom_tabs.ministerio_hispano.epa.value == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- EPM BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.epm.value != blank %}
+              {% assign l2_class_count = l2_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Escuela para Padres/ Seminario para Matrimonios {% if person.custom_tabs.ministerio_hispano.epm.value == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- LB BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.lb.value != blank %}
+              {% assign l2_class_count = l2_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Lectura eficaz de la Biblia {% if person.custom_tabs.ministerio_hispano.lb.value == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- EJ BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.ej.value != blank %}
+              {% assign l2_class_count = l2_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Evangelio de Juan {% if person.custom_tabs.ministerio_hispano.ej.value == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- LH BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.lh.value != blank %}
+              {% assign l2_class_count = l2_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Libro de los Hechos {% if person.custom_tabs.ministerio_hispano.lh.value == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- IS BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.is.value != blank %}
+              {% assign l2_class_count = l2_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>El Mensaje del Profeta Isaías {% if person.custom_tabs.ministerio_hispano.is.value == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              {% if l2_class_count == 0 %}
+              <div>
+                &nbsp;
+              </div>
+              {% endif %}
+
+              <!-- BEGIN LEVEL 3  -->
+              <div class="nivel">
+                Cursos Superior
+              </div>
+
+              {% assign l3_class_count = 0 %}
+
+              <!-- C BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.c.value != blank %}
+              {% assign l3_class_count = l3_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Consejeria {% if person.custom_tabs.ministerio_hispano.c.value == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- EB BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.eb.value != blank %}
+              {% assign l3_class_count = l3_class_count | plus: 1 %}
+                <div class="class_name">
+                 <strong>Exposición biblica {% if person.custom_tabs.ministerio_hispano.eb.value == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- GP BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.gp.value != blank %}
+              {% assign l3_class_count = l3_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Grupos Pequeños {% if person.custom_tabs.ministerio_hispano.gp.value == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- M BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.m.value != blank %}
+              {% assign l3_class_count = l3_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Misiones {% if person.custom_tabs.ministerio_hispano.m.value == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              <!-- DP BELOW -->
+              {% if person.custom_tabs.ministerio_hispano.dp.value != blank %}
+              {% assign l3_class_count = l3_class_count | plus: 1 %}
+                <div class="class_name">
+                  <strong>Desarrollo Personal {% if person.custom_tabs.ministerio_hispano.dp.value == "Parte" %}<span class="parte">PARTE</span>{% endif %}</strong>
+                </div>
+              {% endif %}
+
+              {% if l3_class_count == 0 %}
+              <div>
+                &nbsp;
+              </div>
+              {% endif %}
+
+            </div>
+          </div>
+	      </div>
+      {% unless forloop.last == true %}
+      <div style="page-break-after: always;">
+        
+      </div>
+      {% endunless %}
+      <div class="spacer">
+        &nbsp;
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
